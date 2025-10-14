@@ -12,6 +12,7 @@ use Src\Repositories\BookingRepository;
  * Handles business logic for creating and managing bookings.
  */
 class BookingService {
+    const MAX_GUESTS_PER_ROOM = 4;
     /**
      * @var BookingRepository Repository for booking database operations
      */
@@ -64,9 +65,9 @@ class BookingService {
             throw new \Exception('Check-out date must be after check-in date');
         }
 
-        // if ($guests < 1 || $guests > $this->roomConfig['max_guests_per_room']) {
-        //     throw new \Exception('Invalid number of guests for this room type');
-        // }
+        if ($guests < 1 || $guests > self::MAX_GUESTS_PER_ROOM) {
+            throw new \Exception('Invalid number of guests for this room type');
+        }
         //Duplicate booking check
         $existing = $this->bookingRepo->findOverlapBooking(
             $data['user_id'],
