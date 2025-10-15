@@ -99,6 +99,7 @@ vendor/bin/phpunit tests/BookingTest.php
 {
     "hotel_id": 2,
     "room_type": "Deluxe",
+    "price_per_night": 250,
     "guests": 2,
     "check_in": "2025-10-15",
     "check_out": "2025-10-18"
